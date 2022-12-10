@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.jsx
 
-function App() {
+import React from "react";
+// import { useState } from "react";
+import useInput from "./hooks/useInput";
+
+const App = () => {
+  // input의 갯수가 늘어날때마다 state와 handler가 같이 증가한다.
+  /* const [title, setTitle] = useState("");
+  const onChangeTitleHandler = (e) => {
+    setTitle(e.target.value);
+  };*/
+
+  const [title, onChangeTitleHandler] = useInput();
+
+  // input의 갯수가 늘어날때마다 state와 handler가 같이 증가한다.
+  /* const [body, setBody] = useState("");
+  const onChangeBodyHandler = (e) => {
+    setBody(e.target.value);
+  };*/
+
+  const [body, onChangeBodyHandler] = useInput();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input
+        type="text"
+        name="title"
+        value={title}
+        onChange={onChangeTitleHandler}
+      />
+      <input
+        type="text"
+        name="title"
+        value={body}
+        onChange={onChangeBodyHandler}
+      />
     </div>
   );
-}
+};
 
 export default App;
